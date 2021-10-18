@@ -52,7 +52,7 @@ export const User = styled(FaRegUserCircle)`
 
 export const Notification = styled(MdNotificationsActive)`
   display: none;
-  color: #808080;
+  color: #DC5D59;
   display: block;
   font-size: 1.8rem;
   cursor: pointer;

@@ -14,6 +14,12 @@ const FoodMenuTable = () => {
     { name: "Anaheim Peppers", price: "20", units: "20", amount: "10" },
     { name: "Banquet Beer", price: "20", units: "20", amount: "10" },
     { name: "Black Pepper", price: "20", units: "20", amount: "10" },
+    { name: "Brown Sugar", price: "20", units: "20", amount: "10" },
+    { name: "Butter milk", price: "20", units: "20", amount: "10" },
+    { name: "Blended Oil", price: "20", units: "20", amount: "10" },
+    { name: "California Dry Red Peppers", price: "20", units: "20", amount: "10" },
+    { name: "Chicken Breast", price: "20", units: "20", amount: "10" },
+    { name: "Chili Powder", price: "20", units: "20", amount: "10" },
   ]);
 
   return (
