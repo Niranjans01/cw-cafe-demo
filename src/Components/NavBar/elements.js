@@ -1,5 +1,5 @@
 import { FaBars, FaRegUserCircle } from "react-icons/fa";
-import { MdNotificationsActive } from "react-icons/md";
+import { MdNotificationsActive, MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -44,9 +44,17 @@ export const Bars = styled(FaBars)`
 
 export const User = styled(FaRegUserCircle)`
   display: none;
-  color: #808080;
+  color: #000000;
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+`;
+
+export const OptionIcon = styled(MdKeyboardArrowDown)`
+  display: none;
+  color: #000000;
+  display: block;
+  font-size: 1.5rem;
   cursor: pointer;
 `;
 

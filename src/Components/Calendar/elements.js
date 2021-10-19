@@ -13,6 +13,7 @@ export const CalendarIcon = styled(FiCalendar)`
   color: #000;
   display: block;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 export const BillBtn = styled(Link)`

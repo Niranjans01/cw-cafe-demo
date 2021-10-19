@@ -7,26 +7,57 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { Form, Input } from "../SearchBar/elements";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useState } from "react";
+import { SubmitBtn } from "./elements";
 
 const FoodMenuTable = () => {
-  const [menu] = useState([
-    { name: "American Cheese", price: "20", units: "20", amount: "10" },
-    { name: "Anaheim Peppers", price: "20", units: "20", amount: "10" },
-    { name: "Banquet Beer", price: "20", units: "20", amount: "10" },
-    { name: "Black Pepper", price: "20", units: "20", amount: "10" },
-    { name: "Brown Sugar", price: "20", units: "20", amount: "10" },
-    { name: "Butter milk", price: "20", units: "20", amount: "10" },
-    { name: "Blended Oil", price: "20", units: "20", amount: "10" },
-    { name: "California Dry Red Peppers", price: "20", units: "20", amount: "10" },
-    { name: "Chicken Breast", price: "20", units: "20", amount: "10" },
-    { name: "Chili Powder", price: "20", units: "20", amount: "10" },
+  const [menu, setMenu] = useState([
+    { name: "American Cheese", price: "", units: "", amount: 0 },
+    { name: "Anaheim Peppers", price: "", units: "", amount: 0 },
+    { name: "Banquet Beer", price: "", units: "", amount: 0 },
+    { name: "Black Pepper", price: "", units: "", amount: 0 },
+    { name: "Brown Sugar", price: "", units: "", amount: 0 },
+    { name: "Butter milk", price: "", units: "", amount: 0 },
+    { name: "Blended Oil", price: "", units: "", amount: 0 },
+    {
+      name: "California Dry Red Peppers",
+      price: "",
+      units: "",
+      amount: 0,
+    },
+    { name: "Chicken Breast", price: "", units: "", amount: 0 },
+    { name: "Chili Powder", price: "", units: "", amount: 0 },
   ]);
 
+  const updateMenuAmount = (val, operation) => {
+    let objIndex = menu.findIndex((obj) => obj.name === val.name);
+    menu[objIndex].amount = menu[objIndex].amount + operation;
+    let updatedData = [...menu];
+    setMenu(updatedData);
+    //
+  };
+
+  const updateMenuPrice = (val, updatedVal) => {
+    console.log(updatedVal, val);
+    let objIndex = menu.findIndex((obj) => obj.name === val.name);
+    menu[objIndex].price = updatedVal;
+    let updatedData = [...menu];
+    setMenu(updatedData);
+    //
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{ flexGrow: 1 }}
+      style={{
+        display: "flex",
+        alignItems:'center',
+        flexDirection: "column",
+      }}
+    >
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {menu.map((val, i) => (
           <Grid
+            key={i.toString()}
             style={{
               display: "flex",
               justifyContent: "space-evenly",
@@ -43,7 +74,10 @@ const FoodMenuTable = () => {
             </Grid>
             <Grid item>
               <Form style={{ width: "20px", boxShadow: "0 0 0" }}>
-                <AddIcon style={{ fontSize: "10px" }} />
+                <AddIcon
+                  onClick={() => updateMenuAmount(val, +1)}
+                  style={{ fontSize: "10px", cursor: "pointer" }}
+                />
                 <Input
                   value={val.amount}
                   style={{
@@ -54,7 +88,13 @@ const FoodMenuTable = () => {
                     background: "#fff",
                   }}
                 />
-                <RemoveIcon style={{ fontSize: "10px" }} />
+                <RemoveIcon
+                  onClick={() => updateMenuAmount(val, val.amount > 0 ? -1 : 0)}
+                  style={{
+                    fontSize: "10px",
+                    cursor: "pointer",
+                  }}
+                />
               </Form>
             </Grid>
             <Grid item>
@@ -70,20 +110,29 @@ const FoodMenuTable = () => {
                 id="units"
               >
                 <option value="0" selected="selected">
-                  {val.units} Units
+                  Units
                 </option>
-                <option value="kilo">Kg</option>
+                <option value="kilo">KG</option>
+                <option value="kilo">LBS</option>
+                <option value="kilo">Grams</option>
+                <option value="kilo">Tonnes</option>
               </select>
             </Grid>
             <Grid item>
               <Form style={{ width: "50px", boxShadow: "0 0 0" }}>
                 <AttachMoneyIcon style={{ fontSize: "15px" }} />
-                <Input value={val.price} />
+                <Input
+                  onChange={(p) => updateMenuPrice(val, p.target.value)}
+                  value={val.price}
+                />
               </Form>
             </Grid>
           </Grid>
         ))}
       </Grid>
+      <SubmitBtn style={{ width: "178px", textAlign: "center" }}>
+        Submit
+      </SubmitBtn>
     </Box>
   );
 };

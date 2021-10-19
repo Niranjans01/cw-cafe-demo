@@ -9,6 +9,7 @@ import {
   NavBtnLink,
   Notification,
   User,
+  OptionIcon,
 } from "./elements";
 
 const Navbar = () => {
@@ -50,6 +51,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/signin">
             <User />
+            <OptionIcon />
           </NavLink>
         </NavBtn>
       </Nav>
